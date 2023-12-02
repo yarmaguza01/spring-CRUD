@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -46,8 +48,9 @@ public class ProductController {
     @PutMapping("/update")
     public ResponseData updateProduct(@RequestBody Product product) {
         if(product.toString().contains("id")|| product.getId() != null){
-            productService.save(product);
-            return new ResponseData(HttpStatus.OK.toString(),"Successfully",product);
+            Product productUpdate = new Product();
+            productUpdate = productService.save(product);
+            return new ResponseData(HttpStatus.OK.toString(),"Successfully",productUpdate);
         }else {
             return new ResponseData(HttpStatus.BAD_REQUEST.toString(),"productId is Null",null);
         }

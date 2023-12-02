@@ -2,9 +2,7 @@ package com.example.springCRUD.model;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.apache.logging.log4j.message.Message;
 
-import java.io.Serializable;
 
 
 @Getter
